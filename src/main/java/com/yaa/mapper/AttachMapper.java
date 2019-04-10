@@ -27,4 +27,10 @@ public interface AttachMapper {
     int updateByPrimaryKeySelective(Attach record);
 
     int updateByPrimaryKey(Attach record);
+
+    /**
+     * 查询附件的数量
+     * @return
+     */
+    int selectNum();
 }

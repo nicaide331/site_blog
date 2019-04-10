@@ -105,6 +105,8 @@
       order by ${orderByClause}
     </if>
   </select>
+
+
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yaa.model.vo.ContentsExample" >
     select
     <if test="distinct" >
@@ -120,6 +122,8 @@
       order by ${orderByClause}
     </if>
   </select>
+
+
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -483,6 +487,17 @@
     where cid = #{cid,jdbcType=INTEGER}
   </update>
 
+    <update id="updateHits">
+      update bl_contents
+      set hits = hits+1
+      where cid = #{cid}
+    </update>
+  <update id="updateNumOfComment">
+    update bl_contents
+    set comments_num = #{num}
+    where cid = #{cid}
+  </update>
+
   <resultMap id="archiveBoMap" type="com.yaa.model.bo.ArchiveBo">
     <id column="date" property="date"/>
     <result column="count" property="count"/>
@@ -491,4 +506,13 @@
   <select id="findReturnArchiveBo" resultMap="archiveBoMap">
     select FROM_UNIXTIME(created, '%Y年%m月') as date, count(*) as count from bl_contents where type = 'post' and status = 'publish' group by date order by date desc
   </select>
+    <select id="selectNum" resultType="java.lang.Integer">
+      select count(*)
+      from bl_contents
+    </select>
+  <select id="selectHitsNum" resultType="java.lang.Integer">
+      SELECT SUM(hits) FROM bl_contents
+  </select>
+
+
 </mapper>

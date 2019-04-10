@@ -33,4 +33,17 @@ public interface CommentsMapper {
     int updateByPrimaryKeyWithBLOBs(Comments record);
 
     int updateByPrimaryKey(Comments record);
+
+    /**
+     * 根据文章id查询评论条数
+     * @param cid
+     * @return
+     */
+    int selectByCid(int cid);
+
+    /**
+     * 查询评论数量
+     * @return
+     */
+    int selectNum();
 }

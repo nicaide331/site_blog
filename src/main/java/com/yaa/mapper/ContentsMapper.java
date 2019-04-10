@@ -36,4 +36,29 @@ public interface ContentsMapper {
     int updateByPrimaryKey(Contents record);
 
     List<ArchiveBo> findReturnArchiveBo();
+
+    /**
+     * 更新点击
+     * @param cid
+     */
+    void updateHits(Integer cid);
+
+    /**
+     * 根据文章id和评论数量更新文章评论
+     * @param cid
+     * @param num
+     */
+    void updateNumOfComment(Integer cid, int num);
+
+    /**
+     * 文章数量
+     * @return
+     */
+    int selectNum();
+
+    /**
+     * 点击数量
+     * @return
+     */
+    int selectHitsNum();
 }

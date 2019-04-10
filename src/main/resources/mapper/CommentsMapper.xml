@@ -84,7 +84,9 @@
   <sql id="Blob_Column_List" >
     content
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.yaa.model.vo.CommentsExample" >
+
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs"
+          parameterType="com.yaa.model.vo.CommentsExample" >
     select
     <if test="distinct" >
       distinct
@@ -101,6 +103,8 @@
       order by ${orderByClause}
     </if>
   </select>
+
+
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yaa.model.vo.CommentsExample" >
     select
     <if test="distinct" >
@@ -243,7 +247,16 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+    <select id="selectByCid" resultType="java.lang.Integer">
+      select count(*)
+      from bl_comments
+      where cid = #{cid}
+    </select>
+    <select id="selectNum" resultType="java.lang.Integer">
+      select count(*)
+      from bl_comments
+    </select>
+    <update id="updateByExampleSelective" parameterType="map" >
     update bl_comments
     <set >
       <if test="record.coid != null" >

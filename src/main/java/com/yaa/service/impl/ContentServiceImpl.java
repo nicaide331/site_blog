@@ -81,7 +81,8 @@ public class ContentServiceImpl implements ContentService {
         if (null != archives) {
             archives.forEach(archive -> {
                 ContentsExample example = new ContentsExample();
-                ContentsExample.Criteria criteria = example.createCriteria().andTypeEqualTo(Types.ARTICLE.getType()).andStatusEqualTo(Types.PUBLISH.getType());
+                ContentsExample.Criteria criteria = example.createCriteria()
+                        .andTypeEqualTo(Types.ARTICLE.getType()).andStatusEqualTo(Types.PUBLISH.getType());
                 example.setOrderByClause("created desc");
                 String date = archive.getDate();
                 Date sd = DateKit.dateFormat(date, "yyyy年MM月");
@@ -142,5 +143,47 @@ public class ContentServiceImpl implements ContentService {
         example.createCriteria().andCategoriesEqualTo(keyword).andTypeEqualTo(Types.ARTICLE.getType());
         List<Contents> contents = contentsMapper.selectByExample(example);
         return contents;
+    }
+
+    /**
+     * 更新点击量
+     * @param cid
+     */
+    @Override
+    public void updateHits(Integer cid) {
+        contentsMapper.updateHits(cid);
+    }
+
+    /**
+     * 根据id查询文章
+     * @param cid
+     * @return
+     */
+    @Override
+    public Contents getComments(Integer cid) {
+        return null;
+    }
+
+    @Override
+    public void updateNumOfComment(Integer cid, int num) {
+        contentsMapper.updateNumOfComment(cid, num);
+    }
+
+    /**
+     * 文章数量
+     * @return
+     */
+    @Override
+    public int selectNum() {
+        return contentsMapper.selectNum();
+    }
+
+    /**
+     * 点击数量
+     * @return
+     */
+    @Override
+    public int selectHitsNum() {
+        return contentsMapper.selectHitsNum();
     }
 }

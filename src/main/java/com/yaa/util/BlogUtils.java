@@ -209,6 +209,7 @@ public class BlogUtils {
         } catch (NoSuchAlgorithmException ignored) {
         }
         byte[] encode = messageDigest.digest(source.getBytes());
+        System.err.println(encode + "+======================");
         StringBuilder hexString = new StringBuilder();
         for (byte anEncode : encode) {
             String hex = Integer.toHexString(0xff & anEncode);

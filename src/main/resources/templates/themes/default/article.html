@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <div th:replace="partial/header::header" ></div>
 <body>
 <article class="main-content page-page" itemscope itemtype="http://schema.org/Article">
@@ -24,17 +25,17 @@
 </article>
 <div id="post-bottom-bar" class="post-bottom-bar">
     <div class="bottom-bar-inner">
-        <div class="bottom-bar-items social-share left">
-            <span class="bottom-bar-item">Share : </span>
-            <span class="bottom-bar-item bottom-bar-facebook">
-                <a th:href="'https://www.facebook.com/sharer/sharer.php?u='+${commons.permalink(article)}" target="_blank" th:title="${title}" rel="nofollow">facebook</a></span>
-            <span class="bottom-bar-item bottom-bar-twitter">
-                <a th:href="'https://twitter.com/intent/tweet?url='+${commons.site_url()}+'&amp;text='+${title ?: '首页'}+' - '+${commons.site_title()}" target="_blank" th:title="${title}" rel="nofollow">Twitter</a></span>
-            <span class="bottom-bar-item bottom-bar-weibo">
-                <a th:href="'http://service.weibo.com/share/share.php?url='+${commons.site_url()}+'&amp;title='+${title ?: '首页'}+' - '+${commons.site_title()}" target="_blank" th:title="${title}" rel="nofollow">Weibo</a></span>
-            <span class="bottom-bar-item bottom-bar-qrcode">
-                <a th:href="'http://qr.liantu.com/api.php?text='+${commons.permalink(article)}" target="_blank" rel="nofollow">QRcode</a></span>
-        </div>
+        <!--<div class="bottom-bar-items social-share left">-->
+            <!--<span class="bottom-bar-item">Share : </span>-->
+            <!--<span class="bottom-bar-item bottom-bar-facebook">-->
+                <!--<a th:href="'https://www.facebook.com/sharer/sharer.php?u='+${commons.permalink(article)}" target="_blank" th:title="${title}" rel="nofollow">facebook</a></span>-->
+            <!--<span class="bottom-bar-item bottom-bar-twitter">-->
+                <!--<a th:href="'https://twitter.com/intent/tweet?url='+${commons.site_url()}+'&amp;text='+${title ?: '首页'}+' - '+${commons.site_title()}" target="_blank" th:title="${title}" rel="nofollow">Twitter</a></span>-->
+            <!--<span class="bottom-bar-item bottom-bar-weibo">-->
+                <!--<a th:href="'http://service.weibo.com/share/share.php?url='+${commons.site_url()}+'&amp;title='+${title ?: '首页'}+' - '+${commons.site_title()}" target="_blank" th:title="${title}" rel="nofollow">Weibo</a></span>-->
+            <!--<span class="bottom-bar-item bottom-bar-qrcode">-->
+                <!--<a th:href="'http://qr.liantu.com/api.php?text='+${commons.permalink(article)}" target="_blank" rel="nofollow">QRcode</a></span>-->
+        <!--</div>-->
         <div class="bottom-bar-items right">
             <span class="bottom-bar-item"><a href="#footer">↓</a></span>
             <span class="bottom-bar-item"><a th:href="${commons.thePrev(article.cid)}">←</a></span>

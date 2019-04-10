@@ -30,6 +30,12 @@ public class ArticleServiceImpl implements ArticleService {
     @Autowired
     private MetasMapper metasMapper;
 
+    /**
+     * 文章分页功能
+     * @param page
+     * @param limit
+     * @return
+     */
     @Override
     public PageInfo<Contents> selectArticlePage(int page,int limit) {
         ContentsExample example = new ContentsExample();
@@ -40,6 +46,11 @@ public class ArticleServiceImpl implements ArticleService {
         return new PageInfo<>(contents);
     }
 
+    /**
+     * 文章删除
+     * @param id 文章id
+     * @return
+     */
     @Override
     public ResponseBo deleteArticle(Integer id) {
         if(id==0){
@@ -52,17 +63,24 @@ public class ArticleServiceImpl implements ArticleService {
         return ResponseBo.fail("");
     }
 
+    /**
+     * 修改文章
+     * @param id
+     * @param request
+     */
     @Override
     public void editArticle(Integer id , HttpServletRequest request) {
         Contents contents = contentsMapper.selectByPrimaryKey(id);
         MetasExample example = new MetasExample();
         example.createCriteria().andTypeEqualTo(Types.CATEGORY.getType());
         List<Metas> categories = metasMapper.selectByExample(example);
+        //修改分类和内容
         if(contents!=null){
             request.setAttribute("categories",categories);
             request.setAttribute("contents",contents);
         }
-        request.setAttribute("active","articles");//菜单选中
+        //菜单选中
+        request.setAttribute("active","articles");
     }
 
     @Override
@@ -74,6 +92,11 @@ public class ArticleServiceImpl implements ArticleService {
         request.setAttribute("active","edit");//菜单选中
     }
 
+    /**
+     * 修改文章
+     * @param contents
+     * @return
+     */
     @Override
     public ResponseBo updateArticle(Contents contents) {
         if(contents==null){
@@ -88,6 +111,12 @@ public class ArticleServiceImpl implements ArticleService {
         return ResponseBo.fail("error");
     }
 
+    /**
+     *
+     * @param contents
+     * @param users
+     * @return
+     */
     @Override
     public ResponseBo addArticle(Contents contents, Users users) {
         if(contents==null){
@@ -111,6 +140,7 @@ public class ArticleServiceImpl implements ArticleService {
         }
         return ResponseBo.fail("error");
     }
+
 
     private void validateTags(Contents contents){
         List<String> tags = Arrays.asList(contents.getTags().split(","));

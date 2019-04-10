@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <div th:replace="admin/header::header"></div>
 <body class="skin-black-light sidebar-mini">
 <div class="wrapper">
@@ -10,7 +11,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Site Blog
+        Richard--Blog
         <small>Version 2.0</small>
       </h1>
       <!--<ol class="breadcrumb">-->
@@ -29,7 +30,7 @@
               <i class="glyphicon glyphicon-bookmark"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">文章</span>
-              <span class="info-box-number">90<small>篇</small></span>
+              <span class="info-box-number"  th:text="${total.contentsNum}">90<small>篇</small></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -42,8 +43,8 @@
               <i class="ion ion-ios-people-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">访客</span>
-              <span class="info-box-number">90<small>人</small></span>
+              <span class="info-box-text">访问量</span>
+              <span class="info-box-number"  th:text="${total.hitsNum}">90<small>次</small></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -58,7 +59,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">留言</span>
-              <span class="info-box-number">90<small>条</small></span>
+              <span class="info-box-number" th:text="${total.commentsNum}">90<small>条</small></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -72,7 +73,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">附件</span>
-              <span class="info-box-number">90<small>个</small></span>
+              <span class="info-box-number"  th:text="${total.attachNum}">90<small>个</small></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -96,7 +97,7 @@
               <div class="row">
                 <div class="col-md-8">
                   <p class="text-center">
-                    <strong>流量统计：2018-08-07</strong>
+                    <strong>流量统计：2019-3-19</strong>
                   </p>
 
                   <div class="chart">
@@ -112,7 +113,7 @@
 
                   <div class="progress-group">
                     <span class="progress-text">文章发布</span>
-                    <span class="progress-number"><b>2</b>/5</span>
+                    <span class="progress-number"><b>6</b>/10</span>
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-aqua" style="width: 33%"></div>
                     </div>
@@ -120,7 +121,7 @@
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">附件数量</span>
-                    <span class="progress-number"><b>310</b>/400</span>
+                    <span class="progress-number"><b>8</b>/10</span>
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
                     </div>
@@ -129,7 +130,7 @@
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">访问量</span>
-                    <span class="progress-number"><b>310</b>/400</span>
+                    <span class="progress-number"><b>251</b>/400</span>
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-red" style="width: 60%"></div>
                     </div>
@@ -137,7 +138,7 @@
                   <!-- /.progress-group -->
                   <div class="progress-group">
                     <span class="progress-text">评论数</span>
-                    <span class="progress-number"><b>480</b>/800</span>
+                    <span class="progress-number"><b>3</b>/10</span>
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-green" style="width: 70%"></div>
                     </div>

@@ -34,6 +34,14 @@ public class AttachServiceImpl implements AttachService {
         return new PageInfo<>(attaches);
     }
 
+    /**
+     * 保存附件
+     * @param fname
+     * @param fkey
+     * @param ftype
+     * @param author
+     * @return
+     */
     @Override
     public int save(String fname, String fkey, String ftype, Integer author) {
         if(fname.length()>10){
@@ -60,5 +68,14 @@ public class AttachServiceImpl implements AttachService {
             return ResponseBo.ok("删除附件成功");
         }
         return ResponseBo.fail("删除附件失败！");
+    }
+
+    /**
+     * 查询附件数量
+     * @return
+     */
+    @Override
+    public int selectNum() {
+        return attachMapper.selectNum();
     }
 }

@@ -158,7 +158,10 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+    <select id="selectNum" resultType="java.lang.Integer">
+      select count(*) from bl_attach;
+    </select>
+    <update id="updateByExampleSelective" parameterType="map" >
     update bl_attach
     <set >
       <if test="record.id != null" >

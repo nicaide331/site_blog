@@ -86,7 +86,8 @@ public class IndexController extends BaseController{
      * @return 主页
      */
     @RequestMapping(value = "/page/{p}")
-    public String index(HttpServletRequest request, @PathVariable int p, @RequestParam(value = "limit", defaultValue = "12") int limit) {
+    public String index(HttpServletRequest request, @PathVariable int p,
+                        @RequestParam(value = "limit", defaultValue = "12") int limit) {
         p = p < 0 || p > WebConst.MAX_PAGE ? 1 : p;
         PageInfo<Contents> articles = contentService.getContents(p, limit);
         request.setAttribute("articles", articles);
@@ -105,6 +106,13 @@ public class IndexController extends BaseController{
     @RequestMapping(value = "/article/{cid}")
     public String getArticle(HttpServletRequest request, @PathVariable Integer cid) {
         Contents contents = contentService.getContents(cid);
+        //更新点击
+        contentService.updateHits(cid);
+
+        //更新评论
+        int num = commentService.selectByCid(cid);
+        contentService.updateNumOfComment(cid, num);
+
         if (null == contents || "draft".equals(contents.getStatus())) {
             return this.render404();
         }

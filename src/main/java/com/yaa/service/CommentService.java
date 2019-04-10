@@ -23,4 +23,16 @@ public interface CommentService {
 
     ResponseBo deleteComments(Integer id);
 
+    /**
+     * 根据文章id查询评论条数
+     * @param cid 文章id
+     * @return 条数
+     */
+    int selectByCid(int cid);
+
+    /**
+     * 查询评论数量
+     * @return
+     */
+    int selectNum();
 }

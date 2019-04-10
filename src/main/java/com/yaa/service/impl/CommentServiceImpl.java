@@ -103,6 +103,25 @@ public class CommentServiceImpl implements CommentService {
     }
 
     /**
+     * 根据文章id查询评论条数
+     * @param cid 文章id
+     * @return 评论条数
+     */
+    @Override
+    public int selectByCid(int cid) {
+        return commentsMapper.selectByCid(cid);
+    }
+
+    /**
+     * 查询评论数量
+     * @return
+     */
+    @Override
+    public int selectNum() {
+        return commentsMapper.selectNum();
+    }
+
+    /**
      * copy原有的分页信息，除数据
      * 返回格式不同，所以需要把父级的分页信息copy
      * @param ordinal

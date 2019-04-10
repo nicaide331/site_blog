@@ -58,10 +58,12 @@ public class AttachController {
     @ResponseBody
     @PostMapping(value = "/upload")
     public ResponseBo upload(HttpServletRequest request, @RequestParam("file") MultipartFile multipartFile) {
+        //System.err.println(multipartFile.getSize());
         UUID uuid = UUID.randomUUID();
         Users users = BlogUtils.getLoginUser(request);
         Integer uid = users.getUid();
         try {
+            //现在设置为100MB可以上传大于1MB文件了
             String fname = multipartFile.getOriginalFilename();
             if (multipartFile.getSize() <= WebConst.MAX_FILE_SIZE) {
                 String fKey = uuid + "." +BlogUtils.getFileExt(fname);

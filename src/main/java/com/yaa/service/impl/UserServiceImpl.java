@@ -29,6 +29,13 @@ public class UserServiceImpl implements UserService {
         return usersMapper.selectByPrimaryKey(id);
     }
 
+    /**
+     * 登录
+     * @param username
+     * @param password
+     * @param request
+     * @return
+     */
     @Override
     public ResponseBo login(String username, String password , HttpServletRequest request) {
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
@@ -42,6 +49,7 @@ public class UserServiceImpl implements UserService {
             return ResponseBo.fail("不存在该用户");
         }
         String pwd = BlogUtils.MD5encode(username + password);
+        System.err.println(pwd+"+++++++++++++++++++");
         criteria.andPasswordEqualTo(pwd);
         List<Users> userVos = usersMapper.selectByExample(example);
         if (userVos.size() != 1) {

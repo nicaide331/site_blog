@@ -3,13 +3,20 @@ package com.yaa.model;
 import java.io.Serializable;
 
 public class Users implements Serializable{
+
+    //id
     private Integer uid;
 
+    //name
     private String username;
 
+    //密码
     private String password;
 
+
+    //邮箱
     private String email;
+
 
     private String homeUrl;
 

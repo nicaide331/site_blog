@@ -31,4 +31,32 @@ public interface ContentService {
     List<Contents> getAllowFeedContents();
 
     List<Contents> getContentsByCategories(String keyword);
+
+    void updateHits(Integer cid);
+
+    /**
+     * 根据id查询
+     * @param cid
+     * @return
+     */
+    Contents getComments(Integer cid);
+
+    /**
+     * 根据文章id和评论数量更新
+     * @param cid 文章id
+     * @param num 评论数量
+     */
+    void updateNumOfComment(Integer cid, int num);
+
+    /**
+     * 文章数量
+     * @return
+     */
+    int selectNum();
+
+    /**
+     * 点击数量
+     * @return
+     */
+    int selectHitsNum();
 }

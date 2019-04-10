@@ -19,6 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 类别
+ */
 @Service
 public class CategoryServiceImpl implements CategoryService {
 

@@ -38,6 +38,8 @@ public class PagesServiceImpl implements PagesService {
         return new PageInfo<>(contents);
     }
 
+
+
     @Override
     public ResponseBo deletePages(Integer id) {
         if(id==0){

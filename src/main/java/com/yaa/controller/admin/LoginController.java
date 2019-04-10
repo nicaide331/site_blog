@@ -21,7 +21,8 @@ public class LoginController extends BaseController {
     public ResponseBo doLogin(Users users,HttpServletRequest request) {
         Integer error_count = cache.get("login_error_count");
         if (error_count==null || error_count < 3) {
-            ResponseBo responseBo = userService.login(users.getUsername(), users.getPassword(), request);
+            ResponseBo responseBo = userService.login(users.getUsername(),
+                    users.getPassword(), request);
             if (responseBo.getCode() == -5) {
                 error_count = null == error_count ? 1 : error_count + 1;
                 cache.set("login_error_count", error_count, 10 * 60);
@@ -30,5 +31,7 @@ public class LoginController extends BaseController {
         }
         return ResponseBo.fail("您输入密码已经错误超过3次，请10分钟后尝试");
     }
+
+
 
 }

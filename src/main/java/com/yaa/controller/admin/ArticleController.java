@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * 文章管理类
+ */
 @Controller
 @RequestMapping(value = "/admin/articles")
 public class ArticleController extends BaseController {

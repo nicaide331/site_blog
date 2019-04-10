@@ -13,4 +13,9 @@ public interface AttachService {
 
     ResponseBo delete(Integer id);
 
+    /**
+     * 查询附件数量
+     * @return
+     */
+    int selectNum();
 }
